@@ -45,7 +45,7 @@ String message = "Invalid username or password";
 			int x = ps.executeUpdate();
 
 			if (x > 0)
-				message = project.getName() + " project Created Successfully...";
+				message = project.getName() + " project Created Successfully";
 
 		} catch (SQLException e) {
 			message = e.getMessage();
@@ -66,7 +66,7 @@ String message = "Invalid username or password";
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				projectList.add(new Projects(rs.getInt("ProjectID"), rs.getString("GPM")));
+				projectList.add(new Projects(rs.getInt("ProjectID"), rs.getString("PName")));
 			}
 
 		} catch (SQLException e) {
@@ -94,7 +94,7 @@ String message = "Invalid username or password";
 			int eu = ps.executeUpdate();
 
 			if (eu > 0)
-				message = gpm.getName() + " is registered successfully as GPM.";
+				message = gpm.getName() + "is registered successfully as GPM.";
 
 		} catch (SQLException e) {
 			message = e.getMessage();
@@ -128,7 +128,7 @@ String message = "Invalid username or password";
 	}
 	@Override
 	public String allocateProjectToGPM(int projectId, int GPMId) throws BDOException,GPMException,EmployeeException{
-		String message = "Not Allocated...!";
+		String message = "Not Allocated";
 		String proj_name = "";
 		String gpm_name = "";
 
@@ -149,7 +149,7 @@ String message = "Invalid username or password";
 				ResultSet rs2 = ps2.executeQuery();
 
 				if (rs2.next()) {
-					proj_name = rs2.getString("NAME");
+					proj_name = rs2.getString("PNAME");
 
 					PreparedStatement ps3 = conn.prepareStatement("insert into GPM_PROJECT values(?,?)");
 					ps3.setInt(1,projectId );
@@ -157,10 +157,11 @@ String message = "Invalid username or password";
 
 					int eu = ps3.executeUpdate();
 
-					if (eu > 0)
-						message = proj_name + " Project allocated to " + gpm_name + " GPM Successfully...";
-					else
+					if (eu > 0) {
+						message = "Project allocated";
+					}else {
 						throw new BDOException("Something went wrong...!");
+						}
 				} else
 					throw new EmployeeException("Invalid Project Id...!");
 			} else

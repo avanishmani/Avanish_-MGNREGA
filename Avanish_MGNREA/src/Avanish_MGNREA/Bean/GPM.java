@@ -7,6 +7,10 @@ public class GPM {
     private String Mobile;
 	private String Password;
 	private String Villege;
+	
+	public GPM() {
+		super();
+	}
 	public GPM(int gPM_Id, String name, String email, String mobile, String password, String villege) {
 		super();
 		GPM_Id = gPM_Id;
@@ -52,9 +56,7 @@ public class GPM {
 	public void setVillege(String villege) {
 		Villege = villege;
 	}
-	public GPM() {
-		super();
-	}
+
 	public GPM(String name, String email, String mobile, String password, String villege) {
 		super();
 		

@@ -33,6 +33,7 @@ public class DButil {
         
         try {
             Class.forName(driverName);
+            
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
