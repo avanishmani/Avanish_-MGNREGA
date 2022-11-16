@@ -10,13 +10,12 @@ import Avanish_MGNREA.custom.Custom;
 
 public class CreateProjectCase {
 
-	public static  void CreateProjectByBDO() {
-		Scanner sc=new Scanner(System.in);
+
+	public static  void CreateProjectByBDO(int pid,String pName) {
+		
 		try {
-			System.out.println(Custom.ORANGE + "Enter Project ID number" + Custom.RESET);
-			int pid =sc.nextInt();
-			System.out.println(Custom.ORANGE + "Enter Project Name name" + Custom.RESET);
-			String pName = sc.next();
+			
+
 			Projects pro=new Projects(pid, pName);
 			BDO dao=new BDOImpl();
 			String result =dao.createProject(pro);
@@ -28,7 +27,9 @@ public class CreateProjectCase {
 		}catch(InputMismatchException e) {
 			System.out.println(Custom.RED_BACKGROUND + "Invalid input" + Custom.RESET);
 		}
-		sc.close();
+
+
+
 	}
 
 }

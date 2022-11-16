@@ -8,14 +8,10 @@ import Avanish_MGNREA.Exception.GPMException;
 import Avanish_MGNREA.custom.Custom;
 
 public class GPMLoginCase {
-public static boolean GPMLogin() {
-	Scanner sc=new Scanner(System.in);
-	System.out.println(Custom.ORANGE+  "Enter username" + Custom.RESET);
-	String username = sc.next();
-	
-	System.out.println(Custom.ORANGE + "Enter password" + Custom.RESET);
-	String password = sc.next();
-	sc.close();
+
+public static boolean GPMLogin(String username,String password) {
+
+
 	GPMDao dao=new GPMDaoImpl();
 	String s1="";
 	try {

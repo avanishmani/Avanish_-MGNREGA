@@ -9,29 +9,18 @@ import Avanish_MGNREA.Dao.BDOImpl;
 import Avanish_MGNREA.custom.Custom;
 
 public class CreateGPMCase {
-public static void CreateGPM() {
+
+
+public static void CreateGPM(String name, String email,String contact,String password,String Vill) {
 	
 	try {
-		Scanner sc = new Scanner(System.in);
-		
-		System.out.println(Custom.ORANGE + "Enter GPMname" + Custom.RESET);
-		String name = sc.next();
-		
-		System.out.println(Custom.ORANGE + "Enter Email of GPM" + Custom.RESET);
-		String email = sc.next();
-		
-		System.out.println(Custom.ORANGE + "Enter Contact Number" + Custom.RESET);
-		String contact = sc.next();
-		
-		System.out.println(Custom.ORANGE + "Enter Password" + Custom.RESET);
-		String password = sc.next();
-		
-		sc.nextLine();
-		System.out.println(Custom.ORANGE + "Enter Village" + Custom.RESET);
-		String Vill = sc.nextLine();
 		
 		
-		sc.close();
+		
+		
+		
+		
+
 		BDO dao = new BDOImpl();
 		GPM g1=new GPM(name, email, contact, password, Vill);
 		

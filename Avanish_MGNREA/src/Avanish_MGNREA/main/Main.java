@@ -16,6 +16,9 @@ import Avanish_MGNREA.Usecases.ViewAllProjectsCase;
 import Avanish_MGNREA.custom.Custom;
 
 public class Main {
+
+	static Scanner sc=new Scanner(System.in);
+
 	static void BDOOrGPM() {
 		System.out.println();
 		System.out.println("<===================  WELCOME TO MGNREGA MANAGEMENT SYSTEM  ===================> ");
@@ -33,7 +36,7 @@ public class Main {
 choice();
 }
 	static void choice() {
-		Scanner sc = new Scanner(System.in);
+
 		
 		int n = 0;
 		try {
@@ -53,6 +56,7 @@ choice();
 		if (n == 1) {
 			System.out.println(Custom.ROSY_PINK + "Welcome BDO ! Please Login to your account" + Custom.RESET);
 			BDOLogin();
+
 		}
 		else if (n == 2) {
 			System.out.println(Custom.ROSY_PINK + "Welcome GPM !" + Custom.RESET);
@@ -73,11 +77,16 @@ choice();
 			
 			BDOOrGPM();
 		}
-		sc.close();
+
 	}
 static void BDOLogin() {
-		
-		Boolean result = BDOLoginUseCase.BDOLogin();
+	System.out.println(Custom.ORANGE+  "Enter username" + Custom.RESET);
+	String username = sc.next();
+	
+	System.out.println(Custom.ORANGE + "Enter password" + Custom.RESET);
+	String password = sc.next();
+		Boolean result = BDOLoginUseCase.BDOLogin(username,password);
+
 //		CreateProjectCase.CreateProjectByBDO();
 //		ViewAllProjectsCase.viewAllProjects();
 
@@ -86,7 +95,7 @@ static void BDOLogin() {
 		
 	}
 static void BDOMethods() {
-	Scanner sc1 = new Scanner(System.in);
+
 	int n1=0;
 	System.out.println(Custom.PURPLE + "+-----------------------------------------------------------------------+" + "\n"
 					 + "| Welcome BDO                                                           |" + "\n"
@@ -104,7 +113,9 @@ static void BDOMethods() {
 	
 	
 	try {
-		n1 = sc1.nextInt();
+
+		n1 = sc.nextInt();
+
 		if (n1 != 1 && n1 != 2 && n1 != 3 && n1 != 4 && n1 != 5 && n1 != 6 && n1 != 7 && n1 != 8) {
 			System.out.println(Custom.RED_BACKGROUND + "Please choose a number from below options" + Custom.RESET);
 			BDOMethods();
@@ -123,14 +134,19 @@ static void BDOMethods() {
 		
 		BDOMethods();
 	}
-	sc1.close();
+
 }
 static void BDOChoice(int choice) {
 	
 	switch(choice) {
 		case 1 : {
 
-			CreateProjectCase.CreateProjectByBDO();
+			System.out.println(Custom.ORANGE + "Enter Project ID number" + Custom.RESET);
+			int pid =sc.nextInt();
+			System.out.println(Custom.ORANGE + "Enter Project Name name" + Custom.RESET);
+			String pName = sc.next();
+			CreateProjectCase.CreateProjectByBDO(pid,pName);
+
 			BDOMethods();
 		}
 		break;
@@ -142,7 +158,23 @@ static void BDOChoice(int choice) {
 		break;
 		case 3 : {
 
-			CreateGPMCase.CreateGPM();
+			System.out.println(Custom.ORANGE + "Enter GPMname" + Custom.RESET);
+			String name = sc.next();
+			
+			System.out.println(Custom.ORANGE + "Enter Email of GPM" + Custom.RESET);
+			String email = sc.next();
+			
+			System.out.println(Custom.ORANGE + "Enter Contact Number" + Custom.RESET);
+			String contact = sc.next();
+			
+			System.out.println(Custom.ORANGE + "Enter Password" + Custom.RESET);
+			String password = sc.next();
+			
+			
+			System.out.println(Custom.ORANGE + "Enter Village" + Custom.RESET);
+			String Vill = sc.next();
+			CreateGPMCase.CreateGPM(name, email, contact, password, Vill);
+
 			BDOMethods();
 		}
 		break;
@@ -153,7 +185,13 @@ static void BDOChoice(int choice) {
 		}
 		break;
 		case 5 : {
-			AllocateProjectToGPMCase.AllocateProject();
+
+			System.out.println(Custom.ORANGE + "Enter Project ID number" + Custom.RESET);
+			int pid =sc.nextInt();
+			System.out.println(Custom.ORANGE + "Enter GPM ID number" + Custom.RESET);
+			int gid = sc.nextInt();
+			AllocateProjectToGPMCase.AllocateProject(pid, gid);
+
 			BDOMethods();
 		}
 		break;
@@ -171,7 +209,14 @@ static void BDOChoice(int choice) {
 	}
 }
 static void GPMLogin() {
-	Boolean result = GPMLoginCase.GPMLogin();
+
+	System.out.println(Custom.ORANGE+  "Enter username" + Custom.RESET);
+	String username = sc.next();
+	
+	System.out.println(Custom.ORANGE + "Enter password" + Custom.RESET);
+	String password = sc.next();
+	Boolean result = GPMLoginCase.GPMLogin(username,password);
+
 	if(result==true) GPMServer();
 	else GPMLogin();
 }
@@ -181,16 +226,27 @@ static void GPMServer() {
 			                                + "| 1. Create Employee                                                                      |" + "\n"
 			                                + "| 2. View the Details of Employee.                                                        |" + "\n"
 			                                + "| 3. Assign Employee to a Project.                                                        |" + "\n"
-			                                + "| 4. View total number of days Employee worked in a project and also their wages.         |" + "\n"
-			                                + "| 5. Back To Login Page.                                                                  |" + "\n"
-			                                + "| 6. EXIT                                                                                 |" + "\n"
+			                                + "|                                                                                         |" + "\n"
+			                                + "| 4. Back To Login Page.                                                                  |" + "\n"
+			                                + "| 5. EXIT                                                                                 |" + "\n"
 			                                + "+-----------------------------------------------------------------------------------------+" + Custom.RESET);
 	try {
 		Scanner sc = new Scanner(System.in);
 		int choice = sc.nextInt();
 		
 		if (choice == 1) {
-			CreateEmployeeCase.CreateEmpl();
+
+			System.out.println(Custom.ORANGE + "Enter Employee name" + Custom.RESET);
+			String name = sc.next();
+			
+			System.out.println(Custom.ORANGE + "Enter Contact Number" + Custom.RESET);
+			String contact = sc.next();
+			
+			
+			System.out.println(Custom.ORANGE + "Enter Address of Employee" + Custom.RESET);
+			String Address = sc.next();
+			CreateEmployeeCase.CreateEmpl(name, contact, Address);
+
 			GPMServer();
 		}
 		else if (choice == 2) {
@@ -199,19 +255,30 @@ static void GPMServer() {
 			GPMServer();
 		}
 		else if (choice == 3) {
-//			customerSignup();
-			AssignEmployeesToProjectCase.EmpOnProject();
+
+			System.out.println(Custom.ORANGE + "Enter Project ID number" + Custom.RESET);
+			int eid =sc.nextInt();
+			System.out.println(Custom.ORANGE + "Enter Employee ID number" + Custom.RESET);
+			int pid =sc.nextInt();
+			System.out.println(Custom.ORANGE + "Enter Start Day Of  Employee" + Custom.RESET);
+			String start = sc.next();
+			System.out.println(Custom.ORANGE + "Enter End Day Of  Employee" + Custom.RESET);
+			String end = sc.next();
+			System.out.println(Custom.ORANGE + "Enter Employee Wages " + Custom.RESET);
+			int Wages = sc.nextInt();
+			AssignEmployeesToProjectCase.EmpOnProject(pid, eid, start, end, Wages);
 			GPMServer();
 		}
+//		else if (choice == 4) {
+////			customerSignup();
+//			GPMServer();
+//		}
 		else if (choice == 4) {
-//			customerSignup();
-			GPMServer();
-		}
-		else if (choice == 5) {
      		BDOOrGPM();
 
 		}
-		else if (choice == 6) {
+		else if (choice == 5) {
+
 			System.out.println(Custom.ROSY_PINK + "Thank you ! Visit again" + Custom.RESET);
 			System.exit(0);
 		}
@@ -230,6 +297,7 @@ static void GPMServer() {
 		// TODO Auto-generated method stub
 //AssignEmployeesToProjectCase.EmpOnProject();
 		BDOOrGPM();
+
 	}
 
 }

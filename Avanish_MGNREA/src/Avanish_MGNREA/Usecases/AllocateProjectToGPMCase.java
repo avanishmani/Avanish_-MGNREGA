@@ -10,14 +10,13 @@ import Avanish_MGNREA.Exception.GPMException;
 import Avanish_MGNREA.custom.Custom;
 
 public class AllocateProjectToGPMCase {
-public static void AllocateProject() {
+
+public static void AllocateProject(int pid,int gid) {
 	BDO dao=new BDOImpl();
-	Scanner sc=new Scanner(System.in);
-	System.out.println(Custom.ORANGE + "Enter Project ID number" + Custom.RESET);
-	int pid =sc.nextInt();
-	System.out.println(Custom.ORANGE + "Enter GPM ID number" + Custom.RESET);
-	int gid = sc.nextInt();
-	sc.close();
+//	Scanner sc=new Scanner(System.in);
+	
+//	sc.close();
+
 	try {
 	String s1=	dao.allocateProjectToGPM(pid, gid);
 	if(s1.equals("Project allocated")) {

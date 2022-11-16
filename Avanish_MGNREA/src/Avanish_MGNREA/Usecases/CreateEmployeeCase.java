@@ -12,22 +12,10 @@ import Avanish_MGNREA.Dao.GPMDaoImpl;
 import Avanish_MGNREA.custom.Custom;
 
 public class CreateEmployeeCase {
-public static void CreateEmpl() {
+
+public static void CreateEmpl(String name,String contact,String Address) {
 	try {
-		Scanner sc = new Scanner(System.in);
-		
-		System.out.println(Custom.ORANGE + "Enter Employee name" + Custom.RESET);
-		String name = sc.next();
-		
-		System.out.println(Custom.ORANGE + "Enter Contact Number" + Custom.RESET);
-		String contact = sc.next();
-		
-		
-		System.out.println(Custom.ORANGE + "Enter Address of Employee" + Custom.RESET);
-		String Address = sc.next();
-		
-		
-		sc.close();
+
 		GPMDao dao = new GPMDaoImpl();
 		Employees e1=new Employees(name, contact, Address);
 		
