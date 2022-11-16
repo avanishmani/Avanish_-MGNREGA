@@ -5,6 +5,13 @@ public class Employees {
 	private String Name;
 	private String Mobile;
 	private String Address;
+	public Employees(int emplId, String name, String mobile, String address) {
+		
+		EmplId = emplId;
+		Name = name;
+		Mobile = mobile;
+		Address = address;
+	}
 	@Override
 	public String toString() {
 		return "Employees [EmplId=" + EmplId + ", Name=" + Name + ", Mobile=" + Mobile + ", Address=" + Address + "]";

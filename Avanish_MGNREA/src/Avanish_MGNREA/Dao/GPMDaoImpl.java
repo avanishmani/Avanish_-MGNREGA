@@ -16,7 +16,7 @@ public class GPMDaoImpl implements GPMDao {
 	@Override
 	public String loginGPM(String email, String pass) throws GPMException {
 		// TODO Auto-generated method stub
-		String name = null;
+		String name = "Login Failed";
 
 		try (Connection conn = DButil.provideConnection()) {
 
@@ -27,7 +27,7 @@ public class GPMDaoImpl implements GPMDao {
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next())
-				name = rs.getString("Name");
+				name = "Login Succefull";
 			else
 				throw new GPMException("Invalid Email or Password..");
 
@@ -48,7 +48,7 @@ public class GPMDaoImpl implements GPMDao {
 
 			ps.setString(1, empl.getName());
 			ps.setString(2, empl.getMobile());
-			ps.setString(2, empl.getAddress());
+			ps.setString(3, empl.getAddress());
 
 			int eu = ps.executeUpdate();
 
@@ -56,7 +56,7 @@ public class GPMDaoImpl implements GPMDao {
 				message = empl.getName() + " is registered successfully as Employee.";
 
 		} catch (SQLException e) {
-			message = e.getMessage();
+//			message = e.getMessage();
 		}
 
 		return message;
@@ -74,7 +74,7 @@ public class GPMDaoImpl implements GPMDao {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				emplList.add(new Employees( rs.getString("Name"), rs.getString("Mobile"),
+				emplList.add(new Employees(rs.getInt("EmplId"), rs.getString("EMPLName"), rs.getString("Mobile"),
 						rs.getString("Address")));
 			}
 
@@ -94,7 +94,7 @@ public class GPMDaoImpl implements GPMDao {
 
 		try (Connection conn = DButil.provideConnection()) {
 
-			PreparedStatement ps1 = conn.prepareStatement(" select emplname from Employee where emplid=?");
+			PreparedStatement ps1 = conn.prepareStatement("select emplname from Employee where emplid=?");
 
 			ps1.setInt(1, EmployeeId);
 
@@ -103,7 +103,7 @@ public class GPMDaoImpl implements GPMDao {
 			if (rs1.next()) {
 				empl_name = rs1.getString("emplname");
 
-				PreparedStatement ps2 = conn.prepareStatement(" select pname from project where PROJECTiD=?");
+				PreparedStatement ps2 = conn.prepareStatement("select pname from project where PROJECTiD=?");
 				ps2.setInt(1, projectId);
 
 				ResultSet rs2 = ps2.executeQuery();
@@ -120,13 +120,13 @@ public class GPMDaoImpl implements GPMDao {
 					int eu = ps3.executeUpdate();
 
 					if (eu > 0)
-						message = empl_name + " Employee assigned to " + proj_name + " Project Successfully...";
+						message = EmployeeId + " Employee assigned to " + projectId + " Project Successfully...";
 					else
 						throw new EmployeeException("Something went wrong...!");
 				} else
 					throw new  EmployeeException("Invalid Project Id...!");
 			} else
-				throw new  EmployeeException("Invalid Employee Id...!");
+				throw new  EmployeeException("Invalid Employee Id...2");
 
 		} catch (SQLException e) {
 			message = e.getMessage();
