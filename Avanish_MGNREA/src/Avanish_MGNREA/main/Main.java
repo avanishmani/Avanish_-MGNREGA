@@ -14,12 +14,13 @@ import Avanish_MGNREA.Usecases.ViewAllEmployeesWorkDetailsCase;
 import Avanish_MGNREA.Usecases.ViewAllGPMCase;
 import Avanish_MGNREA.Usecases.ViewAllProjectsCase;
 import Avanish_MGNREA.custom.Custom;
-
+//Main Class Started From Here
 public class Main {
 
 	static Scanner sc=new Scanner(System.in);
 
 	static void BDOOrGPM() {
+		//Project Landing Page 
 		System.out.println();
 		System.out.println("<===================  WELCOME TO MGNREGA MANAGEMENT SYSTEM  ===================> ");
 		System.out.println("	The Mahatama Gandhi National Rural Employment Guarantee Act 2005 ");
@@ -27,7 +28,7 @@ public class Main {
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println();
 
-		
+		//Login Option for BDO and GPM
 		System.out.println(Custom.PURPLE + "+---------------------------+" + "\n"
 				   + "| 1. Login As BDO           |" + "\n"
 				   + "| 2. Login As GPM           |" + "\n"
@@ -37,12 +38,14 @@ choice();
 }
 	static void choice() {
 
-		
+		// Preinitialization of Variable  for taking input 
 		int n = 0;
 		try {
+			//If we get Input As Integer Value
 			n = sc.nextInt();
 		}
 		catch (InputMismatchException e) {
+			//IF Input is other then Integer 
 			System.out.println(Custom.RED_BACKGROUND + "Input type should be number" + Custom.RESET);
 			try {
 				Thread.sleep(10000);
@@ -50,22 +53,26 @@ choice();
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			// again calling same method  because we get another chance to login and make code user friendly
 			BDOOrGPM();
 		}
-		
+		//for BDO Login 
 		if (n == 1) {
 			System.out.println(Custom.ROSY_PINK + "Welcome BDO ! Please Login to your account" + Custom.RESET);
 			BDOLogin();
 
 		}
+		//for GPM Login
 		else if (n == 2) {
 			System.out.println(Custom.ROSY_PINK + "Welcome GPM !" + Custom.RESET);
 			GPMLogin();
 		}
+		//for going OUT OF THE MENU
 		else if (n == 3) {
 			System.out.println(Custom.ROSY_PINK + "Thank you ! Visit again" + Custom.RESET);
 			System.exit(0);
 		}
+		//if Integer is greater then 3 
 		else {
 			System.out.println(Custom.RED_BACKGROUND + "Please choose a number from below options" + Custom.RESET);
 			try {
@@ -79,6 +86,7 @@ choice();
 		}
 
 	}
+	// For BDO Login Feature 
 static void BDOLogin() {
 	System.out.println(Custom.ORANGE+  "Enter username" + Custom.RESET);
 	String username = sc.next();
@@ -94,6 +102,7 @@ static void BDOLogin() {
 		else BDOLogin();
 		
 	}
+//feature that BDO Are Allowed to Do After Login
 static void BDOMethods() {
 
 	int n1=0;
@@ -140,7 +149,7 @@ static void BDOChoice(int choice) {
 	
 	switch(choice) {
 		case 1 : {
-
+//for Creating A new Project 
 			System.out.println(Custom.ORANGE + "Enter Project ID number" + Custom.RESET);
 			int pid =sc.nextInt();
 			System.out.println(Custom.ORANGE + "Enter Project Name name" + Custom.RESET);
@@ -151,13 +160,13 @@ static void BDOChoice(int choice) {
 		}
 		break;
 		case 2 : {
-
+// To View All Project 
 			ViewAllProjectsCase.viewAllProjects();
 			BDOMethods();
 		}
 		break;
 		case 3 : {
-
+//To Create A New GPM
 			System.out.println(Custom.ORANGE + "Enter GPMname" + Custom.RESET);
 			String name = sc.next();
 			
@@ -179,13 +188,13 @@ static void BDOChoice(int choice) {
 		}
 		break;
 		case 4 : {
-
+//To get the List OF All GPM
 			ViewAllGPMCase.ViewAllGPM();
 			BDOMethods();
 		}
 		break;
 		case 5 : {
-
+//Allocating Project to Respective GPM
 			System.out.println(Custom.ORANGE + "Enter Project ID number" + Custom.RESET);
 			int pid =sc.nextInt();
 			System.out.println(Custom.ORANGE + "Enter GPM ID number" + Custom.RESET);
@@ -196,20 +205,23 @@ static void BDOChoice(int choice) {
 		}
 		break;
 		case 6 : {
+			//TO See List Of Employee Working in a Particular Project
 			ViewAllEmployeesWorkDetailsCase.AllEmployeeDetails();
 			BDOMethods();
 		}
 		break;
+		//To return to main Menu
 		case 7 : BDOOrGPM();
 		break;	
 		case 8 : {
+			//thanku Message
 			System.out.println(Custom.ROSY_PINK + "Thank you ! Visit again" + Custom.RESET);
 			System.exit(0);
 		}
 	}
 }
 static void GPMLogin() {
-
+//login method of a GPM
 	System.out.println(Custom.ORANGE+  "Enter username" + Custom.RESET);
 	String username = sc.next();
 	
@@ -220,6 +232,7 @@ static void GPMLogin() {
 	if(result==true) GPMServer();
 	else GPMLogin();
 }
+//all kind of facility available for GPM
 static void GPMServer() { 	
 	System.out.println(Custom.PURPLE + "+-----------------------------------------------------------------------------------------+" + "\n"
 			                                + "|  Welcome to GPM  Account                                                                |" + "\n"
@@ -235,7 +248,7 @@ static void GPMServer() {
 		int choice = sc.nextInt();
 		
 		if (choice == 1) {
-
+//To Create New Employee 
 			System.out.println(Custom.ORANGE + "Enter Employee name" + Custom.RESET);
 			String name = sc.next();
 			
@@ -250,12 +263,13 @@ static void GPMServer() {
 			GPMServer();
 		}
 		else if (choice == 2) {
+			//to get List of all Employee
 //			customerSignup();
 			ViewAllEmplCase.AllEmployeeDetails();
 			GPMServer();
 		}
 		else if (choice == 3) {
-
+//assign Project to an Employee
 			System.out.println(Custom.ORANGE + "Enter Project ID number" + Custom.RESET);
 			int eid =sc.nextInt();
 			System.out.println(Custom.ORANGE + "Enter Employee ID number" + Custom.RESET);
@@ -274,6 +288,7 @@ static void GPMServer() {
 //			GPMServer();
 //		}
 		else if (choice == 4) {
+			// to return to main Menu
      		BDOOrGPM();
 
 		}
