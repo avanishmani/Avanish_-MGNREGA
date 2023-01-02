@@ -3,11 +3,14 @@
 
 
 <h3 align="left" >It is a console-based Java Application where you will be able to log in and log out as an Administrator Block Development Officer (BDO).</h3>
-![Screenshot (1)](https://user-images.githubusercontent.com/96742231/210251402-78a709b6-5131-4495-bb33-5a6a888553d1.png)
+
+![Screenshot (1)](https://user-images.githubusercontent.com/96742231/210253659-29d82c95-cc90-44b9-95ea-e350489c5b2e.png)
 
 
 <h3 align="left" >After logging in as BDO you can create new projects and Gram Panchayat Member (GPM) and also you will be able to delete projects and remove GPM from particular projects.</h3>
-![Screenshot (2)](https://user-images.githubusercontent.com/96742231/210251474-8d4068af-62e2-4018-a7b4-f147926579ec.png)
+
+
+![Screenshot (2)](https://user-images.githubusercontent.com/96742231/210253706-30f6158a-e043-4fd0-ad92-a4be1adc2faf.png)
 
 
 <h3 align="left" >Once a GPM is created and assigned to a specific project, GPM can now log in and log out and he can change the password.</h3>
